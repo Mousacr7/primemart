@@ -92,7 +92,7 @@ const navigate = useNavigate()
 setLoader(true)
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  const res = await fetch("https://primemartbackend-5jha.onrender.com/create-checkout-session", {
+  const res = await fetch("https://primemartbackend-932n.onrender.com/create-checkout-session", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
