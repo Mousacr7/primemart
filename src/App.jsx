@@ -10,6 +10,7 @@ import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
 import CartPage from "./pages/Cart";
 import { useEffect } from "react";
+import SuccessPage from "./pages/Success";
 
 
 
@@ -32,6 +33,7 @@ const App = () => {
       <Route path="/signin" element={<Signin />} />
       <Route path="/forgetpassword" element={<ForgetPassword/>} />
       <Route path="/loader" element={<Loader/>} />
+      <Route path="/success" element={<SuccessPage/>} />
       
       {/* Protected Route */}
     {/* <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} /> */}
