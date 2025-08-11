@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Nav from '../component/Nav'
 import "./cart.css"
+import Loader from '../component/Loader';
+
 
 const getItemKey = (item) =>
   `${item.id}-${item.selectedColor}-${item.selectedSize}-${item.selectedConect}-${item.selectedRam}`;
@@ -9,20 +11,21 @@ const getItemKey = (item) =>
 const getUpdatedPrice = (item) => {
     let basePrice = item.basePrice || item.price; // use basePrice to keep original
     let extra = 0;
-
+    
     if (item.selectedSize === "128GB") extra += 250;
   if (item.selectedSize === "256GB") extra += 500;
   if (item.selectedSize === "32GB") extra -= 200;
 
   if (item.selectedRam === "16GB") extra += 200;
   if (item.selectedRam === "4GB") extra -= 200;
-
+  
   return basePrice + extra;
 };
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
+  const [loader, setLoader] = useState(false)
   
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -83,10 +86,39 @@ const CartPage = () => {
 }, [cartItems, selectedItems]);
 
 const navigate = useNavigate()
+
+  const handleCheckout = async (e) => {
+  e.preventDefault(); // stop page refresh
+setLoader(true)
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  const res = await fetch("https://primemartbackend-5jha.onrender.com/create-checkout-session", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      items: cart.map(item => ({
+        id: item.id,
+        selectedColor: item.selectedColor,
+        selectedSize: item.selectedSize,
+        selectedConect: item.selectedConect,
+        selectedRam: item.selectedRam,
+        quantity: item.quantity
+      }))
+    })
+  });
+
+  const data = await res.json();
+  if (data.url) {
+    window.location.href = data.url;
+    setLoader(false)
+  }
+};
+
   return (
     <div className='cart-page'>
       <Nav />
     <section>
+      {loader && <Loader />}
    
       <h2 className="cart-title">Shopping Cart</h2>
       {cartItems.length === 0 ? (
@@ -144,6 +176,10 @@ const navigate = useNavigate()
           </div>
         </>
       )}
+      <form style={{padding:"3rem"}} onSubmit={handleCheckout}>
+  <button type="submit">Proceed to Checkout</button>
+</form>
+
      </section>
     </div>
   );
