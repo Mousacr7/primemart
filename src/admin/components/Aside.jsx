@@ -16,10 +16,12 @@ const Aside = ({ setMobileOpen, mobileOpen }) => {
   ];
 
   const handleSignOut = async () => {
-    try {
-      await signOut(auth);
-      navigate("/"); // ✅ send user to home/login immediately
-    } catch (error) {
+  try {
+    await signOut(auth);
+    navigate("/");
+    window.location.reload(); // ✅ refresh the page so UI resets
+  } 
+ catch (error) {
       console.error("Error signing out:", error);
     }
   };
