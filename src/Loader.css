@@ -1,0 +1,76 @@
+/* Preloader container */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background-color: white;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.6s ease;
+}
+
+/* Logo + bar wrapper */
+.logo-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: pulse 2s infinite;
+}
+
+/* Glowing logo */
+.logo-load {
+  width: 80px;
+  height: auto;
+  margin-bottom: 1.25rem;
+}
+
+/* Animated bar */
+.loading-bar {
+  width: 120px;
+  height: 6px;
+  background-color: #e5e7eb; /* light gray base */
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.loading-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  height: 100%;
+  width: 50%;
+  background-color: #2563eb; /* royal blue fill */
+  animation: slide 1.2s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+/* Pulse effect */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+/* Bar slide effect */
+@keyframes slide {
+  0% {
+    left: -50%;
+    width: 50%;
+  }
+  50% {
+    left: 25%;
+    width: 60%;
+  }
+  100% {
+    left: 100%;
+    width: 0%;
+  }
+}

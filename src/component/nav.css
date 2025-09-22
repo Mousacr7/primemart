@@ -1,0 +1,240 @@
+
+/* Navbar */
+nav {
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 100;
+}
+
+nav .container {
+  max-width: 1280px; /* or any layout width */
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-radius: 0 0 15px 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.logo {
+
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+/* Brand Name */
+.brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2563eb; /* Royal Blue */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.logo img {
+  width: 100%;
+  max-width: 25px;
+  height: auto;
+ margin-bottom: 11px;
+}
+
+/* Nav Items Wrapper */
+.nav-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  flex: 1;
+}
+
+/* Nav Links */
+.nav-item ul {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 1;
+  flex-grow: 1;
+  min-width: 0;
+
+}
+
+
+.nav-link {
+  color: #1f2937; /* Dark Gray */
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #dbeafe; /* slightly darker blue */
+  color: #111827;
+}
+
+.active {
+  color: #2563eb;
+  background-color: #e0edff;
+  border-bottom: 2px solid #2563eb;
+}
+
+
+/* Search Input */
+.nav-item input[type="search"] {
+  background-color: #f9fafb;
+  border: 1px solid #9ca3af;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 480px;
+  padding: 0.5rem 1rem;
+  color: #1f2937;
+  font-size: 0.9rem;
+}
+
+.nav-item input:focus {
+  outline: 2px solid #2563eb;
+}
+
+/* Scroll Navbar */
+.scroll {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  transition: all 0.3s ease-in-out;
+}
+
+
+/* Suggestions Dropdown */
+.search {
+  margin-top: 10px;
+  position: absolute;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  padding: 1rem 0;
+  top: 100%;
+  right: 0;
+  border-radius: 12px;
+  z-index: 10000;
+}
+
+.search li ,.found {
+  padding: 0.75rem 1.25rem;
+  width: 100%;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  text-align: left;
+}
+
+.search li:hover {
+  background-color: #e0edff;
+  color: #111827;
+}
+
+/* Mobile Nav Bar */
+.bottom-link {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  padding: 0.75rem 1rem;
+}
+
+.bottom-link ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bottom-link li {
+  flex: 1;
+  text-align: center;
+}
+
+.bottom-link .nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.75rem; /* smaller for mobile */
+  line-height: 1.2;
+  white-space: nowrap;
+}
+ul button {
+  border-radius: 0%;
+  text-align: center;
+  
+}
+ul .login-btn {
+ color: #ffffff;
+ font-weight: 700;
+ letter-spacing: 1px;
+ text-transform: capitalize;
+}
+
+@media (max-width: 900px) and (min-width: 768px) {
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-item input[type="search"] {
+    padding: 0.5rem 1rem; /* Safe and consistent */
+    width: 100%;
+    max-width: 300px;
+    transition: all 0.3s ease;
+    margin: 0 auto; /* Center in flex layout */
+  }
+
+  .nav-item input[type="search"]:focus {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw;
+    max-width: 500px;
+    z-index: 10;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: #2563eb;
+  }
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav .container {
+    justify-content: center;
+    gap: 1rem;
+  }
+  body {
+    margin-bottom: 7rem;
+  }
+
+    .nav-item ul {
+    justify-content: center;
+    gap: 0.5rem; /* smaller gap for mobile */
+  }
+
+
+}

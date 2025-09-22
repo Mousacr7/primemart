@@ -1,0 +1,258 @@
+/* Overlay Panel */
+.options-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* Popup Container */
+.option-box {
+  width: 100%;
+  border-radius: 12px 12px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+  animation: slideUp 0.3s ease-out;
+  background-color: #ffffff;
+}
+
+.box {
+  padding:2rem ;
+  background-color: #ffffff;
+  box-shadow: 0 10px 40px rgba(230, 202, 202, 0.15);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1001;
+  border-radius: 12px 12px 0 0;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.option-header img {
+  max-width: 140px;
+  height: auto;
+  border-radius: 1rem;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Title */
+.option-box h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+/* Price */
+.option-box span {
+  font-size: 1.1rem;
+  color: #16a34a;
+  font-weight: 700;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+/* Options Section */
+.options {
+  display: flex;
+  
+  gap: 1.5rem;
+  justify-content: space-between;
+}
+
+/* Individual Option Row */
+.option {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.option p {
+  font-weight: 700;
+  color: #374151;
+}
+
+/* Buttons Wrapper */
+.option-btn {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Buttons for Choices */
+.option-btn button {
+  background-color: #f3f4f6;
+  color: #2563eb;
+  border: 2px solid #9ca3af;
+  border-radius: 12px;
+  width: auto;
+  min-width: 80px;
+  padding: 0.75rem 1rem;
+  height: 40px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.option-btn button:hover {
+  background-color:#cfcfcfb0;
+  
+}
+
+.option-btn .color {
+  padding: 0;
+  border-radius: 50%;
+  min-width: 32px;
+  height: 32px;
+  border: 1px solid #d1d5db;
+}
+
+/* Fix white color visibility */
+.option-btn button[style*="background-color: white"] {
+  border: 1px solid #9ca3af;
+}
+
+/* Selected State */
+.option-btn button.selected {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+/* message */
+.message {
+  margin-top: 1.5rem;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.message.warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+}
+
+.message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.message-top {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+
+
+/* Confirm Button */
+.add {
+    flex: 2;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  background-color:#2563eb;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+  align-self: center;
+ 
+ width: 100%;
+
+}
+
+.add:hover {
+  background-color: #1e40af;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+
+
+
+.cart-count button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+
+
+/* Close Icon */
+.close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #6b7280;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.close:hover {
+  background-color: transparent;
+  color: #ef4444;
+}
+
+@media (max-width: 768px) {
+  .options {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 480px) {
+  .option-box {
+    width: 100%;
+    padding: 1.25rem;
+  }
+
+  .option {
+    flex: 1 1 100%;
+  }
+
+  .option-btn button {
+    height: 36px;
+    min-width: 40px;
+    font-size: 0.85rem;
+  }
+
+  .add {
+    font-size: 0.95rem;
+  }
+}

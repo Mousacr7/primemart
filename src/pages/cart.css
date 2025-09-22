@@ -1,0 +1,206 @@
+.cart-page {
+    background-color: white;
+    height: 100vh;
+    
+}
+
+.cart-title {
+    text-align: center;
+    font-size: 2rem;
+  margin: 2rem 0 1rem;
+  font-weight: bold;
+}
+
+
+.cart-container {
+    display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  
+}
+
+
+.cart {
+  display: flex;
+  gap: 1rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  padding: 1rem;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  
+}
+
+.cart:hover {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+/* Hide default checkbox */
+input[type="checkbox"].custom-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: white;
+  margin: 0;
+  font: inherit;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #666;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+input[type="checkbox"].custom-checkbox::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  transform: scale(0);
+  transition: transform 0.2s ease-in-out;
+  box-shadow: inset 1em 1em #007bff; /* check color */
+  border-radius: 50%;
+}
+
+input[type="checkbox"].custom-checkbox:checked::before {
+  transform: scale(1);
+}
+
+input[type="checkbox"].custom-checkbox:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+
+
+.cart .image img {
+  border-radius: 8px;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.cart-content {
+  flex: 1;
+}
+
+.cart-header h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.cart-header p {
+  color: #777;
+  font-size: 0.85rem;
+}
+
+.cart-option {
+  display: flex;
+  
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.cart-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-count {
+  display: flex;
+  align-items: center;
+  background-color: #f1f1f1;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.cart-count button {
+  width: 30px;
+  height: 30px;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #222;
+}
+.cart-count button:hover {
+    background-color: #e0dede;
+    border-radius: none;
+}
+.cart-count span {
+  margin: 0;
+  padding: 0 0.75rem;
+  background-color: #fff;
+  color: #16a34a;
+  font-weight: bold;
+}
+
+
+
+.cart-total-bar {
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+  padding: 1rem;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+/* icon style */
+.icon-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem; /* Increase icon size */
+  margin-right: 0.4rem;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background-color: crimson;
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 800;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  line-height: 1;
+ border-bottom: 2px solid white;
+ border-left: 2px solid white;
+}
+
+.nav-link .icon-wrapper {
+  margin-right: 4px;
+}
+
+@media (max-width: 768px) {
+  
+
+  .cart-total-bar {
+    bottom: 5.2rem;        /* If you have a navbar at the bottom */
+    margin: 0;
+   box-shadow: none;
+  }
+
+
+
+}

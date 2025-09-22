@@ -1,0 +1,203 @@
+/* === Controls for Mobile === */
+.mobile-controls {
+  display: none;
+  justify-content: space-around;
+  padding: 1rem;
+  background: #f9fafb;
+}
+
+.mobile-controls button {
+  background: transparent;
+  color: black;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.mobile-controls button:hover {
+ background-color: transparent;
+  color: #1d4ed8;
+}
+
+/* === Filter Container === */
+.filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 70px;
+  z-index: 100;
+}
+
+/* === Filter Buttons + Categories === */
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.sort-list {
+  display: flex;
+   justify-content: space-between;
+  gap: 1rem;
+}
+.category-dropdown,
+.sort-dropdown {
+  position: relative;
+}
+
+.filter-btn,.sort-list li {
+  background-color: #f3f4f6;
+  color: #111827;
+  border: 1px solid #d1d5db;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.filter-btn:hover , .sort-list li:hover {
+  background-color: #e0e7ff;
+  color: #1d4ed8;
+}
+
+.active-btn {
+  background: #2563eb;
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+/* === Subcategory Dropdown === */
+.subcategory-menu,
+.sort-mobile {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  z-index: 10;
+  min-width: 160px;
+}
+
+.subcategory-menu li,
+.sort-mobile li {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.subcategory-menu li:hover,
+.sort-mobile li:hover,
+.active-sub {
+  background-color: #f3f4f6;
+  font-weight: 600;
+}
+
+/* === Clear All Button === */
+.clear-btn {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border-color: #fca5a5;
+}
+
+.clear-btn:hover {
+  background-color: #fecaca;
+  color: #7f1d1d;
+}
+
+/* === Summary Bar === */
+.summary-bar {
+  padding: 0.5rem 1.5rem;
+  background: #fffbea;
+  font-weight: 500;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 0.95rem;
+}
+
+/* === Mobile Only (Filter + Sort Popups) === */
+@media (max-width: 768px) {
+  .mobile-controls {
+    display: flex;
+    background-color: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 68px;
+    z-index: 101;
+  }
+
+  .sort-mobile.open {
+    display: none;
+  }
+
+  .filter-sort-bar,
+  .sort-popup-box {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 130px;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    z-index: 1000;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .filter-sort-bar.open,
+  .sort-popup-box.open {
+    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+.sort-list {
+  display: none;
+}
+  .summary-bar {
+    font-size: 0.9rem;
+
+  }
+
+  .summary {
+    margin-top: 60px;
+  }
+}
+
+/* === Desktop: Always show filter/sort bar === */
+@media (min-width: 769px) {
+  .filter-sort-bar,
+  .sort-popup-box {
+    display: flex !important;
+    position: static;
+    transform: none;
+    opacity: 1;
+    background-color: transparent;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .sort-popup-box {
+    display: none !important; /* for mobile-only sort panel */
+  }
+
+  .sort-dropdown .sort-mobile {
+    display: block;
+  }
+}
