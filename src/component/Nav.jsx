@@ -72,7 +72,7 @@ const Nav = ({image}) => {
     }, 300); // 300ms debounce
 
     return () => clearTimeout(debounce);
-  }, [searchTerm]);
+  }, [searchTerm, products]);
 
   // ✅ Handle enter key
   const handleEnter = (e) => {
