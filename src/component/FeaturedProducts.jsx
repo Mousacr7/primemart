@@ -12,7 +12,7 @@ const FeaturedProducts = () => {
         
         <div className="content-wrapper">
         <div className="featured-header">
-            <h2>Featured Products</h2>
+            <h2 className="sub">Featured Products</h2>
           </div>
   <h3 className="see-all" ><Link to="/products">See all →</Link></h3>
   

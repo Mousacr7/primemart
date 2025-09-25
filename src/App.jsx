@@ -16,6 +16,7 @@ import { GlobalProvider } from "./context/GolbalProvider";
 import { AdminRoute } from "./admin/page/AdminRoute";
 import { useAuth } from "./context/AuthContext";
 
+
 const App = () => {
   const { pathname } = useLocation();
   const { currentUser, isAdmin } = useAuth();

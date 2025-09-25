@@ -60,6 +60,7 @@ const Orders = () => {
                           src={client.clientImage}
                           alt={client.clientName}
                           className="w-8 h-8 rounded-full object-cover"
+                          loading="lazy"
                         />
                       )}
                       <span>{client?.clientName || "Unknown"}</span>

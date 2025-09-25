@@ -98,6 +98,7 @@ export const Client = () => {
                       src={Array.isArray(p.image) ? p.image[0] : p.image}
                       alt={p.name}
                       className="w-10 h-10 rounded-lg object-cover shadow-sm"
+                      loading="lazy"
                     />
                     <span className="font-medium text-gray-800">{p.name}</span>
                   </td>

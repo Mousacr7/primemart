@@ -51,7 +51,7 @@ const ProductDetail = () => {
           <div className='image-scroll-wrapper'>
             <div className={`image-scroll ${product.image.length > 2 && "scroll-image"}`}>
             {product.image.map((c, key) => (
-              <img key={key} src={`.${c}`} alt={product.name} />
+              <img key={key} src={c} alt={product.name} />
             ))}
           </div>
         </div>
@@ -87,9 +87,9 @@ const ProductDetail = () => {
        <div className="container">
          <div className="content-wrapper">
            <div className="featured-header">
-          <h2>Similar in {product.subcategory}</h2>
+          <h2 className="sub">Similar in {product.subcategory}</h2>
            </div>
-          <ProductsList products={sameSubcategory} num={4} image={true}/>
+          <ProductsList products={sameSubcategory} num={4} />
           </div>
         </div>
     </section>
@@ -102,9 +102,9 @@ const ProductDetail = () => {
       <div className="container">
          <div className="content-wrapper">
            <div className="featured-header">
-              <h2>More from {product.category}</h2>
+              <h2 className="sub">More from {product.category}</h2>
           </div>
-          <ProductsList products={sameCategory} num={4} image={true}/>
+          <ProductsList products={sameCategory} num={4} />
 
          </div>
        </div>

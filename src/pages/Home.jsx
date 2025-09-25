@@ -10,10 +10,9 @@ import { useGlobal } from '../context/GolbalProvider'
 
 const Home = () => {
     const navigate = useNavigate();
-  const {products } = useGlobal()
+  const {products } = useGlobal();
     // ✅ Get first product for each unique subcategory
     const firstProductsBySub = new Map();
-  
     products.forEach((product) => {
       if (product.subcategory && !firstProductsBySub.has(product.subcategory)) {
         firstProductsBySub.set(product.subcategory, product);
@@ -29,8 +28,8 @@ const Home = () => {
   <div className="hero-image-wrapper">
     <picture>
       {/* <!-- Mobile first --> */}
-      <source media="(min-width: 768px)" srcSet="./asset/hero-desktop.png" />
-      <img src="./asset/hero-mobile.png" alt="Tech products display" className="hero-img" />
+      <source media="(min-width: 768px)" srcSet="https://lkdcpkdsyznswcdohwvs.supabase.co/storage/v1/object/public/primemart/hero-desktop.webp"fetchpriority="high" />
+      <img src="https://lkdcpkdsyznswcdohwvs.supabase.co/storage/v1/object/public/primemart/hero-mobile.webp" alt="Tech products display" className="hero-img" fetchpriority="high" />
     </picture>
   </div>
 

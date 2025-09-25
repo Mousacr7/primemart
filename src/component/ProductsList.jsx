@@ -4,7 +4,7 @@ import ProductOptions from './ProductOptions';
 import { FaCartPlus } from "react-icons/fa";
 import StarRating from './Rating';
 
-const ProductsList = ({ products ,num, image}) => {
+const ProductsList = ({ products ,num }) => {
   const [loading, setLoading] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState(null); // control the open panel
   const navigate = useNavigate();
@@ -30,16 +30,13 @@ const ProductsList = ({ products ,num, image}) => {
         : products.map((product) => (
             <div className="item" key={product.id} onClick={() => navigate(`/product/${product.id}`)}>
               <div className="image">
-                {image ? <img src={`.${product.image[0]}`} alt={product.name} />
-                : <img src={product.image[0]} alt={product.name} loading="lazy" />
-                }
+                <img src={product.image[0]} alt={product.name} loading="lazy" />
+                
               </div>
               <div className="product-detail">
                 <h2>{product.name}</h2>
                 <StarRating rating={product.rating}/>
-<span>${product.price.toFixed(2)}</span>
-
-
+              <span>${product.price.toFixed(2)}</span>
               </div>
               <button
                 className="add-to-cart"

@@ -30,7 +30,7 @@ const home = true
   
       <div className="container review">
         <div className="container-header">
-          <h1 className="header-title">What Clients Say</h1>
+          <h1 className="header-title sub">What Clients Say</h1>
         </div>
 
         <ReviewCard

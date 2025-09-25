@@ -239,6 +239,7 @@ export const Storage = () => {
                         src={p.image[0]}
                         alt={p.name}
                         className="w-12 h-12 object-cover rounded"
+                        loading="lazy"
                       />
                     ) : (
                       <div className="w-12 h-12 bg-gray-200 rounded flex items-center justify-center text-gray-400">

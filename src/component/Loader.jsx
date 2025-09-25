@@ -5,7 +5,7 @@ const Loader = () => {
   return (
     <div id="preloader">
       <div className="logo-wrapper">
-        <img src="../logo.png" alt="Logo" className="logo-load" />
+        <img src="../logo.png" alt="Logo" loading="lazy" className="logo-load" />
         <div className="loading-bar"></div>
       </div>
     </div>
