@@ -65,7 +65,7 @@ const ProductOptions = ({ product, onClose }) => {
   };
 
   /* ----  early exit for non‑logged in user  ---- */
-console.log(product.image)
+
   /* ---------------------------------------- */
   return (
     <>
