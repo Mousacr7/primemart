@@ -106,7 +106,7 @@ const Nav = ({image}) => {
 
   return (
     <nav className={scroll && 'scroll'}>
-      <div className="container">
+      <div className="container flex justify-between">
         {/* Logo */}
           <div className="logo">
             {image ? 

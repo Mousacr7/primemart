@@ -6,7 +6,7 @@ import './filters.css';
 import { useGlobal } from '../context/GolbalProvider';
 
 const Products = () => {
-  const {products} = useGlobal()
+  const {products} = useGlobal();
   const location = useLocation();
   const [category, setCategory] = useState('');
   const [subCategory, setSubCategory] = useState('');
@@ -18,8 +18,8 @@ const Products = () => {
 
   const categories = {
     Tech: { label: 'Tech', icon: '📱', subs: ['Smartphones', 'Earbuds', 'Keyboards'] },
-    // Fashion: { label: 'Fashion', icon: '🧥', subs: ['Shoes', 'Clothes', 'Accessories'] },
-    // Home: { label: 'Home', icon: '🏠', subs: ['Kitchen', 'Decor', 'Furniture'] }
+    Fashion: { label: 'Fashion', icon: '🧥', subs: ['Shoes', 'Clothes', 'Accessories'] },
+    Home: { label: 'Home', icon: '🏠', subs: ['Kitchen', 'Decor', 'Furniture'] }
   };
 
   useEffect(() => {

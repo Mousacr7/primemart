@@ -105,7 +105,6 @@ const ProductDetail = () => {
               <h2 className="sub">More from {product.category}</h2>
           </div>
           <ProductsList products={sameCategory} num={4} />
-
          </div>
        </div>
       </section>

@@ -170,15 +170,16 @@ setLoader(true)
               );
             })}
           </div>
-         <div className="cart-total-bar">
+         <div className="cart-total-bar flex items-center justify-between">
     <h3>Total: ${total.toFixed(2)}</h3>
+    <form style={{padding:"3rem"}} onSubmit={handleCheckout}>
+  <button className="p-4 bg-blue-800 text-white" type="submit">Proceed to Checkout</button>
+</form>
   </div>
           </div>
         </>
       )}
-      <form style={{padding:"3rem"}} onSubmit={handleCheckout}>
-  <button type="submit">Proceed to Checkout</button>
-</form>
+      
 
      </section>
     </div>

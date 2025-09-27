@@ -81,7 +81,7 @@ console.log(product.image)
       {onClose && (
         <div className="option-header">
           <h3>Select features for: {product.name}</h3>
-          <img src={`.${product.image[0]}`} alt={product.name} />
+          <img src={product.image[0]} alt={product.name} />
         </div>
       )}
 
