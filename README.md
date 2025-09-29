@@ -1,9 +1,14 @@
 # 🛍️ PrimeMart — Modern Ecommerce App
 
 Welcome to **PrimeMart**, a stylish and responsive React e-commerce website built to simulate a full online shopping experience.
-
+![live link](https://primemartm.netlify.app/)
+login info:
+admin: admin@gmail.com
+user:test@gmail.com
+Password:123456
 ![Screenshot](./public/screenshot.jpeg)
 ![Screenshot](./public/screenshot-2.png)
+![Screenshot](./public/dashboard.png)
 
 ---
 
