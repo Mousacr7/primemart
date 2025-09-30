@@ -8,7 +8,7 @@ user:test@gmail.com
 Password:123456
 ![Screenshot](./public/screenshot.jpeg)
 ![Screenshot](./public/screenshot-2.png)
-![Screenshot](./public/dashboard.png)
+![Screenshot](./public/dashboard.jpeg)
 
 ---
 
