@@ -15,7 +15,7 @@ body {
 /* Container: centers content with max width and horizontal padding */
 .container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 ;
   padding: 0 1rem; /* horizontal padding inside container */
 }
 
