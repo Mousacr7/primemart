@@ -19,7 +19,7 @@ const ProductsList = ({ products ,num }) => {
   };
 
   return (
-    <div className="products" >
+    <div className="products">
       {loading
         ? Array(num).fill(0).map((_, idx) => (<div className='item'>
             <div key={idx} className="load-1 skeleton"></div>

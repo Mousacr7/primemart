@@ -39,11 +39,14 @@ section {
 }
 
 /* === Product Grid === */
+
+/* === Product Grid === */
 .products {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1rem;
   padding: 1rem 0;
+  max-width: 1200px;
 }
 
 /* === Product Card === */
@@ -51,7 +54,7 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #fff;
+  background-color: var(--color-white);
   padding: 1rem;
   border-radius: 0.75rem;
   border: 1px solid #e5e7eb;
@@ -59,6 +62,7 @@ section {
   transition: box-shadow 0.3s ease, transform 0.2s ease;
   cursor: pointer;
 }
+
 
 .item:hover {
   transform: scale(1.02);
@@ -189,7 +193,7 @@ section {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
+} 
 
 /* 🔧 MOBILE FIX: compact size + horizontal scroll without overflow */
 @media (max-width: 768px) {

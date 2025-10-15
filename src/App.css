@@ -13,11 +13,7 @@ body {
 
 
 /* Container: centers content with max width and horizontal padding */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem; /* horizontal padding inside container */
-}
+
 
 section {
   background-color: #ffffff;
@@ -82,7 +78,7 @@ header {
 /* === HERO SECTION === */
 .hero {
   position: relative;
-  height: 60vh;
+  height: 70vh;
   width: 100%;
   overflow: hidden;
   display: flex;
@@ -98,7 +94,7 @@ header {
 }
 
 .hero-img {
-  height: 60vh;
+  height: 70vh;
   width: 100%;
   object-position: center center;
   display: block;
@@ -118,6 +114,18 @@ header {
   color: #162266;
   margin-bottom: 1rem;
   line-height: 1.2;
+}
+
+.page {
+  display:flex;
+  flex-direction: column;
+  height: auto;
+  justify-content: space-between;
+ 
+  /* Standard practice to center the block container itself */
+  margin: 0 auto;
+  padding: 1rem 0;
+  max-width: 1200px; 
 }
 
 
@@ -202,21 +210,24 @@ button:hover {
 
 
 footer {
-  background: #f9fafb;
-  padding: 1rem 1rem;
+  width: 100%;
+  padding: 0 1rem;
+  background-color: #ffffff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #374151;
 }
 
-footer .container {
-border-top: 1px solid #18191a5b;
-  max-width: 1280px;
-  margin: 0 auto;
-  text-align: center;
+
+
+.bold .social a {
+  color: #1a3be0;
+}
+
+.footer-content {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  justify-content: space-between;
+  padding: 1rem 3rem;
 }
 
 /* Logo and Title */
@@ -244,7 +255,7 @@ border-top: 1px solid #18191a5b;
 }
 
 .social a {
-  color: #6b7280;
+  color: #3f4146;
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
@@ -254,7 +265,8 @@ border-top: 1px solid #18191a5b;
 }
 
 /* Copyright */
-footer > .container > div:last-child {
+.footer-last {
+  border-top: 1px solid #18191a5b;
   font-size: 0.9rem;
   color: #6b7280;
 }
@@ -264,7 +276,9 @@ footer > .container > div:last-child {
   .footer-header img{
     max-width: 25px;
   }
-
+footer .container {
+  margin-bottom: 5rem;
+}
   .social {
     justify-content: center;
     flex-wrap: wrap;

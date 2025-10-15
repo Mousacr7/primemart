@@ -6,22 +6,24 @@ nav {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   position: relative;
   z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
-nav .container {
-  max-width: 1280px; /* or any layout width */
+.nav {
   width: 100%;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  border-radius: 0 0 15px 15px;
+  padding: 0.5rem 2rem;
+  margin: 0 auto;
+  border-radius: 0 0 15px 50px;
   transition: all 0.3s ease-in-out;
 }
 
 .logo {
-
   display: flex;
   align-items: center;
   margin-right: 1rem;
@@ -46,13 +48,20 @@ nav .container {
 }
 
 /* Nav Items Wrapper */
+.nav-item-2{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+}
+
 .nav-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
   position: relative;
-  flex: 1;
+
 }
 
 /* Nav Links */
@@ -91,16 +100,6 @@ nav .container {
 
 
 /* Search Input */
-.nav-item input[type="search"] {
-  background-color: #f9fafb;
-  border: 1px solid #9ca3af;
-  border-radius: 20px;
-  width: 100%;
-  max-width: 480px;
-  padding: 0.5rem 1rem;
-  color: #1f2937;
-  font-size: 0.9rem;
-}
 
 .nav-item input:focus {
   outline: 2px solid #2563eb;
@@ -118,26 +117,42 @@ nav .container {
 
 
 /* Suggestions Dropdown */
-.search {
+.search-div {
   margin-top: 10px;
   position: absolute;
-  background-color: #ffffff;
+  top: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  
+  align-items: center;
+  justify-content: center;
   width: 100%;
   padding: 1rem 0;
-  top: 100%;
-  right: 0;
-  border-radius: 12px;
+  border-radius: 0;
   z-index: 10000;
+}
+
+.search-bar {
+   width: 100%;
+  padding: 0.5rem 2rem;
+  border-radius:12px 12px 0 0 ;
+  border: none;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+
+.search {
+  padding: 0.5rem 2rem;
+  border-radius: 0 0 12px 12px ;
+  width: 100%;
+  background-color: #ffffff;
+
 }
 
 .search li ,.found {
   padding: 0.75rem 1.25rem;
   width: 100%;
-  border-bottom: 1px solid #e5e7eb;
   font-size: 0.95rem;
   cursor: pointer;
   transition: background 0.2s ease;
@@ -200,7 +215,7 @@ ul .login-btn {
   .nav-item input[type="search"] {
     padding: 0.5rem 1rem; /* Safe and consistent */
     width: 100%;
-    max-width: 300px;
+
     transition: all 0.3s ease;
     margin: 0 auto; /* Center in flex layout */
   }
@@ -208,10 +223,10 @@ ul .login-btn {
   .nav-item input[type="search"]:focus {
     position: absolute;
     top: 0;
-    left: 50%;
+    left: 0%;
     transform: translateX(-50%);
     width: 90vw;
-    max-width: 500px;
+ 
     z-index: 10;
     background-color: #ffffff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -238,3 +253,5 @@ ul .login-btn {
 
 
 }
+
+

@@ -5,6 +5,7 @@ import { signOut } from "firebase/auth";
 import Nav from '../component/Nav'
 import "./profile.css"
 import { FaPencilAlt, FaUser } from "react-icons/fa";
+import Footer from "../component/Footer";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -48,10 +49,10 @@ const handleSignOut =async (auth) => {
 } 
 
   return (
-    <div>
+    <div >
       <Nav />
-      <section>
-      <div className="profile-page">
+      <section className='profile'>
+      <div className="profile-page ">
 
       <h1>Welcome Home!</h1>
       <div className="image"><FaUser /></div>
@@ -73,6 +74,7 @@ const handleSignOut =async (auth) => {
       )}
       </div>
       </section>
+      <Footer />
     </div>
   );
 };

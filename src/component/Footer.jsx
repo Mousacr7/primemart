@@ -6,14 +6,27 @@ const Footer = () => {
 
   return (
     <footer>
-      <div className="container">
-      <div className='footer-content'>
+      
+      <div className=''>
 
-      </div>
+      <div className='footer-content'>
         {/* Logo and Title */}
         <div className="footer-header">
           <img src="/logo.png" alt="Shop Logo"/>
           <h1>rimeMart</h1>
+        </div>
+        <div className="social">
+          <a href="https://twitter.com" target="_blank" rel="noreferrer">Shop</a>
+          <a href="https://instagram.com" target="_blank" rel="noreferrer">Resources</a>
+          <a href="https://instagram.com" target="_blank" rel="noreferrer">Company</a>
+          
+        </div>
+      </div>
+
+      <div className="footer-content footer-last">
+        {/* Copyright */}
+        <div>
+          &copy; {currentYear} Musa’s Shop. All rights reserved.
         </div>
 
         {/* Social Icons */}
@@ -23,12 +36,9 @@ const Footer = () => {
           <a href="https://instagram.com" target="_blank" rel="noreferrer"><FaInstagram /></a>
           <a href="https://github.com" target="_blank" rel="noreferrer"><FaGithub /></a>
         </div>
-
-        {/* Copyright */}
-        <div>
-          &copy; {currentYear} Musa’s Shop. All rights reserved.
-        </div>
       </div>
+          
+       </div>
     </footer>
   );
 };

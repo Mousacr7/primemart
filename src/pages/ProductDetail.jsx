@@ -7,6 +7,7 @@ import RatingStars from '../component/Rating';
 import "./productDetail.css"
 import { FaTruck } from 'react-icons/fa';
 import { useGlobal } from '../context/GolbalProvider';
+import Footer from '../component/Footer';
 const ProductDetail = () => {
   const {products, reviews} = useGlobal()
   const { id } = useParams();
@@ -29,7 +30,7 @@ const ProductDetail = () => {
     <div className="product-detail-page">
       <Nav image={true}/>
     <section>
-      <div className='container'>
+      <div className='container mt-9'>
    <div className="breadcrumb">
   <Link to="/">Home</Link> / 
   <Link to="/products">Products</Link> / 
@@ -109,6 +110,7 @@ const ProductDetail = () => {
        </div>
       </section>
       )}
+      <Footer />
     </div>
   );
 };

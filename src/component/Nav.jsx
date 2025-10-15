@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useGlobal } from "../context/GolbalProvider";
-import {  FaChartBar, FaHome, FaShoppingBag, FaShoppingCart, FaUser } from 'react-icons/fa';
+import {  FaChartBar, FaHome, FaShoppingBag, FaSearch, FaShoppingCart, FaUser } from 'react-icons/fa';
 import "./nav.css"
 
 
@@ -12,6 +12,7 @@ const Nav = ({image}) => {
 
   const [mobile, setMobile] = useState("");
   const [scroll, setScroll] = useState("");
+  const [search, setSearch] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const { currentUser, isAdmin } = useAuth();
@@ -43,7 +44,7 @@ const Nav = ({image}) => {
   
   }, []);
   useEffect(() =>{
-    const handleScroll = () => setScroll(window.scrollY >= 30);
+    const handleScroll = () => setScroll(window.scrollY >= 0);
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -106,7 +107,8 @@ const Nav = ({image}) => {
 
   return (
     <nav className={scroll && 'scroll'}>
-      <div className="container flex justify-between">
+     
+       <div className="nav">
         {/* Logo */}
           <div className="logo">
             {image ? 
@@ -120,36 +122,6 @@ const Nav = ({image}) => {
 
         {/* Search Box */}
         <div className="nav-item">
-          <input
-            type="search"
-            placeholder="&#128269; Search products..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyDown={handleEnter}
-            />
-
-              {/* Suggestions */}
-            {searchTerm.trim() && (
-      suggestions.length > 0 ? (
-        <ul className="search">
-          {suggestions.map(s => (
-            <li
-              key={s.id}
-              onClick={() => {
-                navigate(`/product/${s.id}`);
-                setSearchTerm('');
-                setSuggestions([]);
-              }}
-            >
-              {s.name}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <div className="search found">No results found</div>
-      )
-    )}
-
           {/* Navigation Links */}
           <div className={` ${mobile &&"bottom-link"}`}>
             <ul>
@@ -175,7 +147,58 @@ const Nav = ({image}) => {
 
             ))}
 
-              {currentUser
+            </ul>
+          </div>
+        </div>
+        <div className="nav-item-2">
+         {!search && <button className="nav-link" onClick={() => setSearch(true)}>
+            <FaSearch /> <span> Search </span>
+          </button>} 
+          {search &&(
+            <div
+          className="fixed inset-0 bg-black bg-opacity-20 z-100 "
+          onClick={() => {
+            setSearch(false);
+          }}
+        />
+      )}
+              {search && 
+              <div className="search-div">
+                  <input
+                  className="search-bar"
+            type="search"
+            placeholder="&#128269; Search products..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyDown={handleEnter}
+            />
+              
+              {/* Suggestions */}
+            {searchTerm.trim() && (
+      suggestions.length > 0 ? (
+        <ul className="search">
+          {suggestions.map(s => (
+            <li
+              key={s.id}
+              onClick={() => {
+                navigate(`/product/${s.id}`);
+                setSearchTerm('');
+                setSuggestions([]);
+              }}
+            >
+              {s.name}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div className="search found">No results found</div>
+      )
+    )}
+    </div>
+  }
+            <ul>
+
+            {currentUser
                 ? <li> {isAdmin ? 
                 <NavLink
                     to="/admin"
@@ -185,7 +208,7 @@ const Nav = ({image}) => {
                    : <NavLink
                     to="/profile"
                     className={({ isActive }) => (isActive ? "active nav-link" : "nav-link")}>
-                      <FaUser />Profile
+                      <FaUser />Account
                       </NavLink> 
                  } 
                  </li>
@@ -196,10 +219,9 @@ const Nav = ({image}) => {
                       </NavLink>
                       </button>
                   }
-            </ul>
-          </div>
+        </ul>
         </div>
-      </div>
+        </div>
     </nav>
   );
 };

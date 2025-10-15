@@ -97,7 +97,7 @@ const ProductOptions = ({ product, onClose }) => {
                 <button
                   key={i}
                   onClick={() => setColor(c)}
-                  className={`color ${color === c ? "selected" : ""}`}
+                  className={`color ${color === c ? "selected-color" : ""}`}
                   style={{ backgroundColor: c }}
                 />
               ))}

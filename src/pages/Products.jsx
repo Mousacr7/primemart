@@ -4,6 +4,7 @@ import ProductsList from '../component/ProductsList';
 import Nav from '../component/Nav';
 import './filters.css';
 import { useGlobal } from '../context/GolbalProvider';
+import Footer from '../component/Footer';
 
 const Products = () => {
   const {products} = useGlobal();
@@ -59,7 +60,9 @@ const Products = () => {
   });
 
   return (
-    <div>
+    <div className=''>
+   <div className='page'>
+
       <Nav />
 
       {/* Mobile Controls */}
@@ -177,7 +180,7 @@ const Products = () => {
           setSortOrder('desc');
           
         }}
-      >
+        >
         🔽 High to Low
       </li>
     </ul>
@@ -197,6 +200,9 @@ const Products = () => {
       </div>
 
       <ProductsList products={sorted} num={8} />
+    
+        </div>
+    <Footer />
     </div>
   );
 };

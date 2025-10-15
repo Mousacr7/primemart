@@ -61,7 +61,7 @@
 /* Price */
 .option-box span {
   font-size: 1.1rem;
-  color: #16a34a;
+  color: #2563eb;
   font-weight: 700;
   text-align: center;
   padding: 0.5rem;
@@ -98,7 +98,7 @@
 
 /* Buttons for Choices */
 .option-btn button {
-  background-color: #f3f4f6;
+  
   color: #2563eb;
   border: 2px solid #9ca3af;
   border-radius: 12px;
@@ -134,10 +134,16 @@
 }
 
 /* Selected State */
-.option-btn button.selected {
+.option-btn button.selected-color {
   outline: 2px solid #2563eb;
   outline-offset: 2px;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  
+}
+.option-btn button.selected {
+  background-color: #2563eb;
+  color: white;
+  border: none;
 }
 /* message */
 .message {

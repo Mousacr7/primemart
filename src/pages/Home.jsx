@@ -25,7 +25,7 @@ const Home = () => {
       <Nav />
 
 <section className="hero">
-  <div className="hero-image-wrapper">
+  <div className="hero-image-wrapper mt-11 pt-3">
     <picture>
       {/* <!-- Mobile first --> */}
       <source media="(min-width: 768px)" srcSet="https://lkdcpkdsyznswcdohwvs.supabase.co/storage/v1/object/public/primemart/hero-desktop.webp"fetchpriority="high" />
@@ -45,7 +45,7 @@ const Home = () => {
 
 
       </header>
-      <main>
+      <main className="page">
           {/* ✅ Subcategory buttons with image */}
 <section className="subcategory">
   <ul className="subcategory-list">
