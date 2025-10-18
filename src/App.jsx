@@ -40,6 +40,7 @@ const App = () => {
       try {
         const token = await currentUser.getIdToken();
         const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/verifyUser`, {
+          method: "POST",
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
