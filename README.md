@@ -67,6 +67,8 @@ git clone https://github.com/Mousacr7/primemart.git
 cd primemart
 npm install
 npm start
+```
+
 Then open 👉 http://localhost:3000
 
 👨‍💻 Author
