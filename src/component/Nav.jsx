@@ -112,9 +112,9 @@ const Nav = ({image}) => {
         {/* Logo */}
           <div className="logo">
             {image ? 
-            <img src="../logo.png" alt="Logo" />
+            <img src="../logo.webp" alt="Logo" />
             :
-            <img src="./logo.png" alt="Logo" />
+            <img src="./logo.webp" alt="Logo" />
             }
             <h1 className="brand">rimeMart</h1>
           </div>

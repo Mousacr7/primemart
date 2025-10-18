@@ -27,6 +27,7 @@ nav {
   display: flex;
   align-items: center;
   margin-right: 1rem;
+  
 }
 
 /* Brand Name */
@@ -41,10 +42,10 @@ nav {
   gap: 0.5rem;
 }
 .logo img {
-  width: 100%;
-  max-width: 25px;
-  height: auto;
+  max-width: 30px;
+  height: 37px;
  margin-bottom: 11px;
+ margin-right: -4px;
 }
 
 /* Nav Items Wrapper */

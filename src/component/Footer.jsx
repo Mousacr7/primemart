@@ -8,11 +8,10 @@ const Footer = () => {
     <footer>
       
       <div className=''>
-
       <div className='footer-content'>
         {/* Logo and Title */}
         <div className="footer-header">
-          <img src="/logo.png" alt="Shop Logo"/>
+          <img src="/logo.webp" alt="Shop Logo"/>
           <h1>rimeMart</h1>
         </div>
         <div className="social">

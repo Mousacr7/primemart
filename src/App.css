@@ -91,6 +91,7 @@ header {
   position: absolute;
   inset: 0;
   z-index: 0;
+   max-width: 1200px; 
 }
 
 .hero-img {
@@ -154,7 +155,12 @@ header {
   background-color: #1a3be0;
   transform: translateY(-2px);
 }
-
+@media (max-width: 768px) {
+ footer {
+  margin-bottom: 5.5rem;
+  background-color: red;
+ }
+}
 /* === MOBILE (≤600px) === */
 @media (max-width: 605px) {
   .hero::before {
@@ -228,6 +234,7 @@ footer {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 3rem;
+  
 }
 
 /* Logo and Title */
@@ -237,9 +244,10 @@ footer {
 }
 
 .footer-header img {
-  max-width: 25px;
-  height: auto;
+  max-width: 30px;
+  height: 40px;
   margin-bottom: 7px;
+  margin-right: -4px;
 }
 
 .footer-header h1 {

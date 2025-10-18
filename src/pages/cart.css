@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: space-between;
     padding-top: 3rem;
+    margin-bottom: 13rem;
 }
 
 .cart-page section {
@@ -45,7 +46,7 @@
 }
 
 /* Hide default checkbox */
-input[type="checkbox"].custom-checkbox {
+.checkbox {
   appearance: none;
   -webkit-appearance: none;
   background-color: white;
@@ -61,7 +62,7 @@ input[type="checkbox"].custom-checkbox {
   transition: background 0.2s, border-color 0.2s;
 }
 
-input[type="checkbox"].custom-checkbox::before {
+.checkbox::before {
   content: "";
   width: 12px;
   height: 12px;
@@ -71,11 +72,11 @@ input[type="checkbox"].custom-checkbox::before {
   border-radius: 50%;
 }
 
-input[type="checkbox"].custom-checkbox:checked::before {
+.checkbox:checked::before {
   transform: scale(1);
 }
 
-input[type="checkbox"].custom-checkbox:focus {
+.checkbox:focus {
   outline: 2px solid #007bff;
   outline-offset: 2px;
 }
@@ -121,7 +122,7 @@ input[type="checkbox"].custom-checkbox:focus {
 }
 
 .cart-info p {
-  color: #303030;
+  color: #007bff;
   font-weight: bold;
 }
 .cart-count {
@@ -174,13 +175,19 @@ input[type="checkbox"].custom-checkbox:focus {
 .cart-bar {
   border-bottom: 2px solid #dbd6d6;
   padding-bottom: 1rem;
+  font-weight: 600;
 }
 .cart-total-bar {
   display: flex;
- padding: 1.5rem 0 0;
+ padding: 1rem 0 0;
   justify-content: center;
   flex-direction: column;
 }
+
+.cart-total-bar h3 {
+  color:#007bff;
+}
+
 .cart-total {
   display: flex;
   justify-content: space-between;
@@ -235,13 +242,13 @@ input[type="checkbox"].custom-checkbox:focus {
 
 @media (max-width: 768px) {
   
-
+  footer {
+    margin-bottom: 20rem;
+  }
   .cart-total-bar {
     bottom: 5.2rem;        /* If you have a navbar at the bottom */
     margin: 0;
    box-shadow: none;
   }
-
-
 
 }

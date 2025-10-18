@@ -134,6 +134,7 @@ const CartPage = () => {
                 return (
                   <div key={itemKey} className="cart">
                     <input
+                    className="checkbox"
                       type="checkbox"
                       checked={selectedItems.includes(itemKey)}
                       onChange={() => handleSelect(item)}
@@ -164,10 +165,15 @@ const CartPage = () => {
               })}
             </div>
             <div className="cart-total-box">
-              <h3>Subtotal: ${subTotal.toFixed(2)}</h3>
-              <h3>Shipping: ${shipping.toFixed(2)}</h3>
-              <h3>Tax: ${tax.toFixed(2)}</h3>
-              <h3>Total: ${total.toFixed(2)}</h3>
+             
+              <div className='cart-bar'>
+              <h3 className='cart-total'>Subtotal: <span>${subTotal.toFixed(2)}</span></h3>
+              <h3 className='cart-total'>Shipping: <span>${shipping.toFixed(2)}</span></h3>
+              <h3 className='cart-total'>Tax: <span>${tax.toFixed(2)}</span></h3>
+              </div>
+
+              <div className='cart-total-bar'>
+              <h3 className='cart-total'>Total: <span>${total.toFixed(2)}</span></h3>
             <button 
               onClick={handleCheckout} 
               className="cart-btn" 
@@ -175,6 +181,7 @@ const CartPage = () => {
             >
               Proceed to Checkout
             </button>
+              </div>
 
             </div>
           </div>
