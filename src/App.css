@@ -91,7 +91,6 @@ header {
   position: absolute;
   inset: 0;
   z-index: 0;
-   max-width: 1200px; 
 }
 
 .hero-img {
