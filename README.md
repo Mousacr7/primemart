@@ -1,12 +1,27 @@
 # 🛍️ PrimeMart — Modern Ecommerce Web App
 
-![PrimeMart Storefront](./public/hero.jpeg)
-![PrimeMart Admin Panel](./public/dashboard.jpeg)
-
 Welcome to **PrimeMart**, a sleek and responsive **React + Firebase + Stripe** e-commerce web app that brings a realistic online shopping experience to life.  
 It includes user and admin panels, live order tracking, charts, CRUD features, and a secure checkout system.
 
+## 🔑 Demo Accounts
+
+Use these credentials to explore the full platform:
+
+| Role | Email | Password |
+|------|--------|-----------|
+| 🧑‍💼 **Admin** | admin@gmail.com | 123456 |
+| 🛍️ **User** | test@gmail.com | 123456 |
+
+> 🛒 **Cart** can't be used without login.  
+> 🔑 Use the **admin login** to access the dashboard, manage orders, and view charts.
+
 🌐 **Live Demo:** [primemartm.netlify.app](https://primemartm.netlify.app)
+
+---
+
+![PrimeMart Storefront](./public/hero.jpeg)
+![PrimeMart Admin Panel](./public/dashboard.jpeg)
+
 
 ---
 
@@ -30,19 +45,6 @@ It includes user and admin panels, live order tracking, charts, CRUD features, a
 
 ---
 
-## 🔑 Demo Accounts
-
-Use these credentials to explore the full platform:
-
-| Role | Email | Password |
-|------|--------|-----------|
-| 🧑‍💼 **Admin** | admin@gmail.com | 123456 |
-| 🛍️ **User** | test@gmail.com | 123456 |
-
-> 🛒 **Cart** can be used without login.  
-> 🔑 Use the **admin login** to access the dashboard, manage orders, and view charts.
-
----
 
 ## 🧰 Tech Stack
 
