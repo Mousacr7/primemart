@@ -56,7 +56,7 @@ const SuccessPage = () => {
 
   return (
     <div className="payment-page">
-      <div className="payment-indicator">
+      <div className="payment-indicator-success">
     <span className="payment-success">✔</span>
 </div>
 
