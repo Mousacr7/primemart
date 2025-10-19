@@ -6,11 +6,16 @@ const CancelPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="cancel-page">
-      <h2 className="text-red-500">❌ Payment was canceled.</h2>
+    <div className="payment-page">
+      <div className="payment-indicator">
+    <span className="payment-failed">✖</span>
+</div>
+
+      <h2>❌ Payment was canceled.</h2>
       <p>You did not complete the payment. You can try again or continue shopping.</p>
       <button onClick={() => navigate("/")}>Go to Home</button>
     </div>
+   
   );
 };
 

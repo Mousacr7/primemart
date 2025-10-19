@@ -55,14 +55,18 @@ const SuccessPage = () => {
   if (loading) return <Loader />;
 
   return (
-    <div className="success-page">
+    <div className="payment-page">
+      <div className="payment-indicator">
+    <span className="payment-success">✔</span>
+</div>
+
       {paid ? (
         <h2>✅ Payment successful! Thank you for your order.</h2>
       ) : (
-        <h2 className="text-red-500">❌ Payment failed: {error}</h2>
+        <h2 className="">❌ Payment failed: {error}</h2>
       )}
       <button onClick={() => navigate("/")}>Go to Home</button>
-    </div>
+    </div> 
   );
 };
 

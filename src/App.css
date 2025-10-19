@@ -278,6 +278,65 @@ footer {
   color: #6b7280;
 }
 
+
+/* payment webhok */
+
+/* Success/Failure Page */
+.payment-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  padding: 2rem;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  gap: 1.5rem;
+  background-color: #f9f9f9;
+}
+
+.payment-page h2 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.payment-page button {
+  padding: 0.6rem 1.2rem;
+  background-color: #1e40af; /* green */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.payment-page button:hover {
+  background-color: #2563eb; /* darker green */
+}
+
+/* Circle indicators for payment status */
+.payment-indicator {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.payment-success {
+  background-color: #22c55e; /* green */
+  color: white;
+}
+
+.payment-failed {
+  background-color: #ef4444; /* red */
+  color: white;
+}
+
+
 /* Responsive */
 @media (max-width: 600px) {
   .footer-header img{
