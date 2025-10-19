@@ -84,7 +84,7 @@ const App = () => {
 
         {/* Admin only */}
         <Route
-          path="/admin"
+          path="/admin/*"
           element={
             userRole === "admin" ? <AdminRoute /> : <Navigate to="/" replace />
           }
