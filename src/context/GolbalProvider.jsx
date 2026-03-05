@@ -5,16 +5,16 @@ import Loader from "../component/Loader";
 
 const GlobalContext = createContext();
 
-// Local fallback images for products
-const localImage = (category, id) => {
+// Helper to generate local images
+const localImages = (category, id) => {
   if (category === "tech") {
     const images = [];
     for (let i = 1; i <= 4; i++) {
-      images.push(`/primemart/${category}/${id}/${id}-${i}.webp`);
+      images.push(`/primemart/${category}/${id}/${id}-${i}.jpg`);
     }
     return images;
   } else {
-    return [`/primemart/${category}/${id}.webp`];
+    return [`/primemart/${category}/${id}.jpg`];
   }
 };
 
@@ -26,24 +26,25 @@ export function GlobalProvider({ children }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // --- Fetch products from Firebase
+        // Fetch products
         const productsQuery = query(collection(db, "products"), orderBy("id"));
         const productsSnapshot = await getDocs(productsQuery);
 
         const productsList = productsSnapshot.docs.map((doc) => {
           const data = doc.data();
 
-          // Add images property (using local fallback paths)
-          const images = localImage(data.category, data.id);
+          // Overwrite the image field with local paths
+          const images = localImages(data.category, data.id);
 
           return {
             firebaseId: doc.id,
             ...data,
-            images,
+            images,       // now all images come from local public folder
+            image: images[0], // the main image is the first local image
           };
         });
 
-        // --- Fetch reviews
+        // Fetch reviews
         const reviewsSnapshot = await getDocs(collection(db, "reviews"));
         const reviewsList = reviewsSnapshot.docs.map((doc) => ({
           id: doc.id,
@@ -54,7 +55,6 @@ export function GlobalProvider({ children }) {
         setReviews(reviewsList);
       } catch (error) {
         console.error("Error fetching data, using fallback images:", error);
-        // If Firebase fails, use empty array but keep local images logic
         setProducts([]);
         setReviews([]);
       } finally {
