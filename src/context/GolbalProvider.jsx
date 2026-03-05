@@ -5,23 +5,17 @@ import Loader from "../component/Loader";
 
 const GlobalContext = createContext();
 
-// Supabase URL prefix to remove
-const SUPABASE_PREFIX = "https://lkdcpkdsyznswcdohwvs.supabase.co/storage/v1/object";
-
-const convertToLocalPath = (imageField) => {
-  if (!imageField) return null;
-
-  if (Array.isArray(imageField)) {
-    // map over array
-    return imageField.map((img) =>
-      img.startsWith(SUPABASE_PREFIX) ? img.replace(SUPABASE_PREFIX, "") : img
-    );
+// Helper to generate local images for each product
+const localImages = (category, id) => {
+  const images = [];
+  if (category === "tech") {
+    for (let i = 1; i <= 4; i++) {
+      images.push(`/primemart/${category}/${id}/${id}-${i}.jpg`);
+    }
   } else {
-    // single string
-    return imageField.startsWith(SUPABASE_PREFIX)
-      ? imageField.replace(SUPABASE_PREFIX, "")
-      : imageField;
+    images.push(`/primemart/${category}/${id}.jpg`);
   }
+  return images;
 };
 
 export function GlobalProvider({ children }) {
@@ -32,25 +26,23 @@ export function GlobalProvider({ children }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // Fetch products
         const productsQuery = query(collection(db, "products"), orderBy("id"));
         const productsSnapshot = await getDocs(productsQuery);
 
         const productsList = productsSnapshot.docs.map((doc) => {
           const data = doc.data();
-
-          // convert image field(s) to local paths
-          const images = convertToLocalPath(data.image);
-          const mainImage = Array.isArray(images) ? images[0] : images;
+          const images = localImages(data.category, data.id); // generate images locally
 
           return {
             id: doc.id,
             ...data,
-            image: mainImage, // first image string
-            images: Array.isArray(images) ? images : [images], // full array
+            image: images[0], // first image as main
+            images,           // full images array
           };
         });
 
-        // fetch reviews
+        // Fetch reviews
         const reviewsSnapshot = await getDocs(collection(db, "reviews"));
         const reviewsList = reviewsSnapshot.docs.map((doc) => ({
           id: doc.id,
@@ -61,8 +53,45 @@ export function GlobalProvider({ children }) {
         setReviews(reviewsList);
       } catch (error) {
         console.error("Error fetching data:", error);
-        setProducts([]);
-        setReviews([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);import { createContext, useContext, useEffect, useState } from "react";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { db } from "../firebase"; // your Firebase config
+import Loader from "../component/Loader";
+
+const GlobalContext = createContext();
+
+export function GlobalProvider({ children }) {
+  const [products, setProducts] = useState([]);
+  const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Fetch products
+       const productsQuery = query(collection(db, "products"), orderBy("id"));
+      const productsSnapshot = await getDocs(productsQuery);
+      const productsList = productsSnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+        // Fetch reviews
+        const reviewsSnapshot = await getDocs(collection(db, "reviews"));
+        const reviewsList = reviewsSnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        setProducts(productsList);
+        setReviews(reviewsList);
+      } catch (error) {
+        console.error("Error fetching data:", error);
       } finally {
         setLoading(false);
       }
@@ -70,6 +99,18 @@ export function GlobalProvider({ children }) {
 
     fetchData();
   }, []);
+
+  return (
+    <GlobalContext.Provider value={{ products, reviews }}>
+      {loading ? <Loader /> : children}
+    </GlobalContext.Provider>
+  );
+}
+
+// Custom hook
+export function useGlobal() {
+  return useContext(GlobalContext);
+}
 
   return (
     <GlobalContext.Provider value={{ products, reviews }}>
