@@ -17,11 +17,11 @@ export const loadProducts = async () => {
       if (data.category === "tech") {
         // tech products have multiple images
         for (let i = 1; i <= 4; i++) {
-          images.push(`/primemart/${data.category}/${data.id}/${data.id}-${i}.webp`);
+          images.push(`../primemart/${data.category}/${data.id}/${data.id}-${i}.webp`);
         }
       } else {
         // other categories only one image
-        images.push(`/primemart/${data.category}/${data.id}.webp`);
+        images.push(`./primemart/${data.category}/${data.id}.webp`);
       }
 
       return {
