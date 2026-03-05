@@ -41,13 +41,18 @@ export function GlobalProvider({ children }) {
           };
         });
 
-        // Fetch reviews
-        const reviewsSnapshot = await getDocs(collection(db, "reviews"));
-        const reviewsList = reviewsSnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-
+    // Fetch reviews
+const reviewsSnapshot = await getDocs(collection(db, "reviews"));
+const reviewsList = reviewsSnapshot.docs.map(doc => {
+  const data = doc.data();
+  return {
+    id: doc.id,
+    ...data,
+    // Applies the path cleaning to 'image' or 'userImage' fields in reviews
+    image: data.image ? formatImagePath(data.image) : data.image,
+    userImage: data.userImage ? formatImagePath(data.userImage) : data.userImage
+  };
+});
         setProducts(productsList);
         setReviews(reviewsList);
       } catch (error) {
