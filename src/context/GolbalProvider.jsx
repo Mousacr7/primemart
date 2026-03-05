@@ -12,6 +12,16 @@ export function GlobalProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+      // generate local images array
+  let images = [];
+  if (data.category === "tech") {
+    for (let i = 1; i <= 4; i++) {
+      images.push(`/primemart/${data.category}/${data.id}/${data.id}-${i}.jpg`);
+    }
+  } else {
+    images.push(`/primemart/${data.category}/${data.id}.jpg`);
+  }
+
     const fetchData = async () => {
       try {
         // Fetch products
@@ -24,7 +34,9 @@ export function GlobalProvider({ children }) {
         // Fetch reviews
         const reviewsSnapshot = await getDocs(collection(db, "reviews"));
         const reviewsList = reviewsSnapshot.docs.map(doc => ({
-          id: doc.id,
+            id: doc.id,
+            image: images[0], // first image as main
+            images,           // full images array
           ...doc.data(),
         }));
 
