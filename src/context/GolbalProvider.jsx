@@ -5,19 +5,23 @@ import Loader from "../component/Loader";
 
 const GlobalContext = createContext();
 
-// Helper: generate local images for a product
-const generateLocalImages = (category, id) => {
-  const images = [];
-  if (category === "tech") {
-    // tech products have multiple images
-    for (let i = 1; i <= 4; i++) {
-      images.push(`/primemart/${category}/${id}/${id}-${i}.webp`);
-    }
+// Supabase URL prefix to remove
+const SUPABASE_PREFIX = "https://lkdcpkdsyznswcdohwvs.supabase.co/storage/v1/object";
+
+const convertToLocalPath = (imageField) => {
+  if (!imageField) return null;
+
+  if (Array.isArray(imageField)) {
+    // map over array
+    return imageField.map((img) =>
+      img.startsWith(SUPABASE_PREFIX) ? img.replace(SUPABASE_PREFIX, "") : img
+    );
   } else {
-    // other products have a single image
-    images.push(`/primemart/${category}/${id}.webp`);
+    // single string
+    return imageField.startsWith(SUPABASE_PREFIX)
+      ? imageField.replace(SUPABASE_PREFIX, "")
+      : imageField;
   }
-  return images;
 };
 
 export function GlobalProvider({ children }) {
@@ -28,23 +32,25 @@ export function GlobalProvider({ children }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // --- Fetch products from Firebase
         const productsQuery = query(collection(db, "products"), orderBy("id"));
         const productsSnapshot = await getDocs(productsQuery);
 
         const productsList = productsSnapshot.docs.map((doc) => {
           const data = doc.data();
-          const images = generateLocalImages(data.category, data.id);
+
+          // convert image field(s) to local paths
+          const images = convertToLocalPath(data.image);
+          const mainImage = Array.isArray(images) ? images[0] : images;
 
           return {
-            id: doc.id,          // Firebase doc id
-            ...data,             // all other product fields
-            image: images[0],    // main image string
-            images,              // full images array for gallery
+            id: doc.id,
+            ...data,
+            image: mainImage, // first image string
+            images: Array.isArray(images) ? images : [images], // full array
           };
         });
 
-        // --- Fetch reviews from Firebase
+        // fetch reviews
         const reviewsSnapshot = await getDocs(collection(db, "reviews"));
         const reviewsList = reviewsSnapshot.docs.map((doc) => ({
           id: doc.id,
@@ -72,7 +78,6 @@ export function GlobalProvider({ children }) {
   );
 }
 
-// Custom hook to use the global context
 export function useGlobal() {
   return useContext(GlobalContext);
 }
