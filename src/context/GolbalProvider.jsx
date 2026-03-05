@@ -5,15 +5,17 @@ import Loader from "../component/Loader";
 
 const GlobalContext = createContext();
 
-// Helper to generate local images for each product
-const localImages = (category, id) => {
+// Helper: generate local images for a product
+const generateLocalImages = (category, id) => {
   const images = [];
   if (category === "tech") {
+    // tech products have multiple images
     for (let i = 1; i <= 4; i++) {
-      images.push(`/primemart/${category}/${id}/${id}-${i}.jpg`);
+      images.push(`/primemart/${category}/${id}/${id}-${i}.webp`);
     }
   } else {
-    images.push(`/primemart/${category}/${id}.jpg`);
+    // other products have a single image
+    images.push(`/primemart/${category}/${id}.webp`);
   }
   return images;
 };
@@ -26,23 +28,23 @@ export function GlobalProvider({ children }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch products
+        // --- Fetch products from Firebase
         const productsQuery = query(collection(db, "products"), orderBy("id"));
         const productsSnapshot = await getDocs(productsQuery);
 
         const productsList = productsSnapshot.docs.map((doc) => {
           const data = doc.data();
-          const images = localImages(data.category, data.id); // generate images locally
+          const images = generateLocalImages(data.category, data.id);
 
           return {
-            id: doc.id,
-            ...data,
-            image: images[0], // first image as main
-            images,           // full images array
+            id: doc.id,          // Firebase doc id
+            ...data,             // all other product fields
+            image: images[0],    // main image string
+            images,              // full images array for gallery
           };
         });
 
-        // Fetch reviews
+        // --- Fetch reviews from Firebase
         const reviewsSnapshot = await getDocs(collection(db, "reviews"));
         const reviewsList = reviewsSnapshot.docs.map((doc) => ({
           id: doc.id,
@@ -53,6 +55,8 @@ export function GlobalProvider({ children }) {
         setReviews(reviewsList);
       } catch (error) {
         console.error("Error fetching data:", error);
+        setProducts([]);
+        setReviews([]);
       } finally {
         setLoading(false);
       }
@@ -68,6 +72,7 @@ export function GlobalProvider({ children }) {
   );
 }
 
+// Custom hook to use the global context
 export function useGlobal() {
   return useContext(GlobalContext);
 }
