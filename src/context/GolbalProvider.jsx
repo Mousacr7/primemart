@@ -50,7 +50,7 @@ const reviewsList = reviewsSnapshot.docs.map(doc => {
     ...data,
     // Applies the path cleaning to 'image' or 'userImage' fields in reviews
     image: data.image ? formatImagePath(data.image) : data.image,
-    userImage: data.userImage ? formatImagePath(data.userImage) : data.userImage
+    clientImage: data.userImage ? formatImagePath(data.userImage) : data.userImage
   };
 });
         setProducts(productsList);
