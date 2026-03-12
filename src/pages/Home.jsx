@@ -28,8 +28,8 @@ const Home = () => {
   <div className="hero-image-wrapper mt-11 pt-3">
     <picture>
       {/* <!-- Mobile first --> */}
-      <source media="(min-width: 768px)" srcSet="../public/primemart/hero-desktop.webp"fetchpriority="high" />
-      <img src="/public/primemart/hero-mobile.webp" alt="Tech products display" className="hero-img" fetchpriority="high" />
+      <source media="(min-width: 768px)" srcSet="./public/primemart/hero-desktop.webp"fetchpriority="high" />
+      <img src="./public/primemart/hero-mobile.webp" alt="Tech products display" className="hero-img" fetchpriority="high" />
     </picture>
   </div>
 
